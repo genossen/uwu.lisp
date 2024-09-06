@@ -100,30 +100,21 @@ ELISP> (pet-idle-movement +adult-chaotic+)
 
 ## Step 2
 
+Set up some simple data structures. A lot of this is adapted from the
+famed land of lisp educational book.
+
+`*objects*` holds all the objects in the game, and `*inventory*` holds
+ all the objects that the player has.
+
 ```common-lisp
-(defparameter *nodes* '((LOCATION (DESCRIPTION))))
-
-(defparameter *edges* '((LOCATION (OTHER-LOCATION METHOD))))
-
 (defparameter *objects* '(OBJECT))
 
 (defparameter *inventory* '(OBJECT))
-
-(defun describe-objects (loc objs obj-loc)
-   (labels ((describe-obj (obj)
-                `(you see a ,obj on the floor.)))
-      (apply #'append (mapcar #'describe-obj (objects-at loc objs obj-loc)))))
-	  
-;;; simplify, because we don't care about going into different rooms:
-
-(defun look (objs)
-   (labels ((describe-obj (obj)
-                `(you see a ,obj .)))
-     (apply #'append (mapcar #'describe-obj objs))))
+```
 
 (defun pickup (object)
-  (cond (TEST)
-         (push (list object 'body) *object-locations*)
+  (cond ((member object *objects*)
+         (push (list object) *inventory*)
          `(you are now carrying the ,object))
 	  (t `(you cannot get the ,object))))
 
@@ -133,7 +124,6 @@ ELISP> (pet-idle-movement +adult-chaotic+)
 (defun have (object) 
     (member object (cdr (inventory))))
 ```
-
 
 ```common-lisp
 ;;; now the REPLy bits...
