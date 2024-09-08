@@ -112,12 +112,15 @@ famed land of lisp educational book.
 (defparameter *inventory* '(OBJECT))
 ```
 
+```common-lisp
 (defun pickup (object)
   (cond ((member object *objects*)
          (push (list object) *inventory*)
          `(you are now carrying the ,object))
 	  (t `(you cannot get the ,object))))
+```
 
+```common-lisp
 (defun inventory ()
   (cons 'items- *inventory*))
 
