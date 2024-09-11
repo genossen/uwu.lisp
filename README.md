@@ -40,7 +40,7 @@
 
 ```common-lisp
 * (load "uwu.lisp")
-* (pet-idle-movement +pet-gfx-neko+
+* (pet-idle-movement +pet-gfx-neko+)
 ```
 
 ## Step 2
