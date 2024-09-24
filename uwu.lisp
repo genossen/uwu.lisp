@@ -14,8 +14,8 @@
   (let ((rng-move (random 5)))
     (cond
       ((and
-	    (= 3 rng-move)
-	    (> *movement* 0))
+	(= 3 rng-move)
+	(> *movement* 0))
        (decf *movement*))
 
       ((and
@@ -83,7 +83,15 @@
 	    ((eq input 'EXIT) (return))))))
 
 (defun pet-game-up-down ()
-  (let ((rng (random 2)))
+  (let ((rng (random 2))
+	(user-choice (read)))
     (cond
-      ((= rng (read)) (print "correct"))
-      (t (print "incorrect")))))
+      ((and
+	(= rng 0)
+	(eq user-choice 'Z))
+       'win)
+      ((and
+	(= rng 1)
+	(eq user-choice 'A))
+       'win)
+      (t 'lose))))
