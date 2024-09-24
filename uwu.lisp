@@ -82,7 +82,7 @@
             ((eq input 'SAVOURY) (print "savoury"))
 	    ((eq input 'EXIT) (return))))))
 
-(defun pet-game-up-down ()
+(defun pet-game-rng-binary ()
   (let ((rng (random 2))
 	(user-choice (read)))
     (cond
