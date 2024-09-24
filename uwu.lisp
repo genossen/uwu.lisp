@@ -85,4 +85,5 @@
 (defun pet-game-up-down ()
   (let ((rng (random 2)))
     (cond
-      ((
+      ((= rng (read)) (print "correct"))
+      (t (print "incorrect")))))
