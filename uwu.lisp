@@ -46,22 +46,31 @@
     (when
 	(eq (read) 'FOOD) (pet-shop-menu-food))))
 
-(defvar *spicy-food* "SPICY food.")
-(defvar *sour-food* "SOUR food.")
-(defvar *salty-food* "SALTY food.")
-(defvar *sweet-food* "SWEET food.")
-(defvar *savoury-food* "SAVOURY food.")
+(defvar *spicy-food-name* "SPICY")
+(defvar *sour-food-name* "SOUR")
+(defvar *salty-food-name* "SALTY")
+(defvar *sweet-food-name* "SWEET")
+(defvar *savoury-food-name* "SAVOURY")
+
+(defvar *spicy-food* 0)
+(defvar *sour-food* 0)
+(defvar *salty-food* 0)
+(defvar *sweet-food* 0)
+(defvar *savoury-food* 0)
+
+(defvar *points* 100)
 
 (defun pet-shop-menu-food ()
   (loop do
     
     (princ "This is the food ~") (terpri)
     (sleep 1)
-    (princ "Options: > ") (princ *spicy-food*) (terpri)
-    (princ "         > ") (princ *sour-food*) (terpri)
-    (princ "         > ") (princ *salty-food*) (terpri)
-    (princ "         > ") (princ *sweet-food*) (terpri)
-    (princ "         > ") (princ *savoury-food*) (terpri)
+    (princ "Options: > ") (princ *spicy-food-name*) (terpri)
+    (princ "         > ") (princ *sour-food-name*) (terpri)
+    (princ "         > ") (princ *salty-food-name*) (terpri)
+    (princ "         > ") (princ *sweet-food-name*) (terpri)
+    (princ "         > ") (princ *savoury-food-name*) (terpri)
+    (princ "         > EXIT") (terpri)
     (sleep 1)
     (princ "> ")
 
@@ -72,3 +81,8 @@
 	    ((eq input 'SWEET) (print "sweet"))
             ((eq input 'SAVOURY) (print "savoury"))
 	    ((eq input 'EXIT) (return))))))
+
+(defun pet-game-up-down ()
+  (let ((rng (random 2)))
+    (cond
+      ((
