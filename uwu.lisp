@@ -58,7 +58,7 @@
 (defvar *sweet-food* 0)
 (defvar *savoury-food* 0)
 
-(defvar *points* 100)
+(defvar *uwu-points* 100)
 
 (defun pet-shop-menu-food ()
   (loop do
@@ -108,4 +108,14 @@
   (princ "[A] Up, or [Z] Down??") (terpri)
   (sleep 1)
   (terpri)
-  (princ "> ") (pet-game-rng-binary))
+  (princ "> ")
+  (cond
+    ((eq (pet-game-rng-binary) 'win)
+     (sleep 1)
+     (princ "You win!") (terpri)
+     (sleep 1)
+     (incf *uwu-points*)
+     (princ "Your points: ") (princ *uwu-points*))
+    (t
+     (sleep 1)
+     (princ "Oh no!! Not a match! Try again??"))))
